@@ -4,6 +4,7 @@
 {
 	imports = [
 		./virtualbox
+		./vmware
 	];
 
 	options.system.virtualization = {
@@ -11,6 +12,7 @@
 		program = lib.mkOption {
 			type = lib.types.enum [
 				"virtualbox"
+				"vmware"
 			];
 			description = "The program that is being used for virtualization.";
 		};

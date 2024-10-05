@@ -20,7 +20,7 @@
 					[
 						"vboxsf"
 					]
-				else null)
+				else [])
 			];
 			initialPassword = "nixos";
 		};

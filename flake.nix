@@ -12,7 +12,7 @@
 
 	outputs = { self, nixpkgs, ... }@inputs: {
 		nixosConfigurations."bertor" = nixpkgs.lib.nixosSystem {
-			specialArgs = {inherit inputs;};
+			specialArgs = { inherit inputs; };
 			modules = [
 				./modules
 				./configuration.nix
