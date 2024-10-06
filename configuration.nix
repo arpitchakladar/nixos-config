@@ -13,6 +13,7 @@
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	system.boot.enable = true;
+	system.boot.efi = false;
 	system.networking.enable = true;
 	system.networking.host = "bertor";
 	system.virtualization.enable = true;

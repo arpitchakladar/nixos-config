@@ -1,17 +1,31 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
 	options.system.boot = {
 		enable = lib.mkEnableOption "Enables boot configuration.";
+		device = lib.mkOption {
+			type = lib.types.str;
+			default = "/dev/sda";
+			description = "Which device to boot from.";
+		};
+		efi = lib.mkOption {
+			type = lib.types.bool;
+			description = "Enables efi mode.";
+		};
 	};
 
-	config = lib.mkIf config.system.boot.enable {
+	config = lib.mkIf config.system.boot.enable
+	(let
+		ifEfi = value: lib.mkIf config.system.boot.efi value;
+	in {
 		# Use the GRUB 2 boot loader.
 		boot.loader.grub.enable = true;
-		# boot.loader.grub.efiSupport = true;
-		# boot.loader.grub.efiInstallAsRemovable = true;
-		# boot.loader.efi.efiSysMountPoint = "/boot/efi";
 		# Define on which hard drive you want to install Grub.
-		boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-	};
+		boot.loader.grub.device = config.system.boot.device; # or "nodev" for efi only
+
+		# EFI configs
+		boot.loader.grub.efiSupport = ifEfi true;
+		boot.loader.grub.efiInstallAsRemovable = ifEfi true;
+		boot.loader.efi.efiSysMountPoint = ifEfi "/boot/efi";
+	});
 }
