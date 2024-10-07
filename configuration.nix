@@ -26,6 +26,8 @@
 	system.time.timeZone = "Asia/Kolkata";
 
 	display-server.enable = true;
+	display-server.sddm.enable = true;
+	display-server.sddm.theme = "monochrome";
 
 	user.enable = true;
 	user.username = "arpit";
