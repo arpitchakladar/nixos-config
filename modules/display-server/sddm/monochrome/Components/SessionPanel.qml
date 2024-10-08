@@ -59,46 +59,11 @@ Item {
 		}
 	}
 
-	Button {
+	CustomButton {
 		id: sessionButton
-		height: config.FontSize * 2.5
-		width: config.FontSize * 2.5
-		hoverEnabled: true
-		icon {
-			source: Qt.resolvedUrl("../icons/settings.svg")
-			color: config.fgColor
-		}
-
-		background: Rectangle {
-			id: sessionButtonBackground
-			color: config.bgColor
-			border.color: config.fgColor
-			border.width: 1
-		}
-
-		states: [
-			State {
-				name: "focus"
-				when: sessionButton.focus || sessionButton.hovered || sessionPopup.visible
-				PropertyChanges {
-					target: sessionButtonBackground
-					border.color: config.placeholderColor
-				}
-			}
-		]
-
-		function togglePopup() {
-			sessionPopup.visible ? sessionPopup.close() : sessionPopup.open()
-		}
-
-		onClicked: togglePopup()
-
-		MouseArea {
-			id: mouseArea
-			anchors.fill: parent
-			cursorShape: Qt.PointingHandCursor
-			onClicked: sessionButton.togglePopup()
-		}
+		iconSource: "../icons/settings.svg"
+		additionalFocusState: sessionPopup.visible
+		onButtonClicked: sessionPopup.visible ? sessionPopup.close() : sessionPopup.open()
 	}
 
 	Popup {
@@ -106,7 +71,7 @@ Item {
 		width: inputWidth
 		x: -(inputWidth)
 		y: -(contentHeight + padding * 2)
-		padding: 8
+		padding: config.FontSize / 2
 
 		background: Rectangle {
 			color: config.bgColor
@@ -117,7 +82,7 @@ Item {
 		contentItem: ListView {
 			id: sessionList
 			implicitHeight: contentHeight
-			spacing: 8
+			spacing: config.FontSize / 2
 			model: sessionWrapper
 			currentIndex: sessionModel.lastIndex
 			clip: true
