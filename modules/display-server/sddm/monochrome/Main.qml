@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import SddmComponents 2.0
 import "Components"
 
 Item {
@@ -26,7 +27,15 @@ Item {
 		}
 		Clock {
 			id: time
-			visible: config.ClockEnabled == "true" ? true : false
+			color: config.fgColor
+			timeFont.family: config.Font
+			dateFont.family: config.Font
+
+			anchors {
+				topMargin: parent.height * 0.12
+				top: parent.top
+				horizontalCenter: parent.horizontalCenter
+			}
 		}
 		LoginPanel {
 			id: loginPanel

@@ -2,27 +2,32 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Item {
-	implicitHeight: powerButton.height
-	implicitWidth: powerButton.width
-	property alias powerButton: powerButton
+	implicitHeight: button.height
+	implicitWidth: button.width
+	property alias button: button
+	property var iconSource
+	property var additionalFocusState: false
+	signal buttonClicked()
+	signal additionalFocusState()
+
 	Button {
-		id: powerButton
+		id: button
 		height: config.FontSize * 2.5
 		width: config.FontSize * 2.5
 		hoverEnabled: true
 		icon {
-			source: Qt.resolvedUrl("../icons/power.svg")
+			source: Qt.resolvedUrl(iconSource)
 			color: config.fgColor
 		}
-		onClicked: sddm.powerOff()
+		onClicked: buttonClicked()
 		MouseArea {
 			id: mouseArea
 			anchors.fill: parent
 			cursorShape: Qt.PointingHandCursor
-			onClicked: sddm.powerOff()
+			onClicked: buttonClicked()
 		}
 		background: Rectangle {
-			id: powerButtonBackground
+			id: buttonBackground
 			color: config.bgColor
 			border.color: config.fgColor
 			border.width: 1
@@ -30,9 +35,9 @@ Item {
 		states: [
 			State {
 				name: "focus"
-				when: powerButton.focus || powerButton.hovered
+				when: button.focus || button.hovered || additionalFocusState
 				PropertyChanges {
-					target: powerButtonBackground
+					target: buttonBackground
 					border.color: config.placeholderColor
 				}
 			}

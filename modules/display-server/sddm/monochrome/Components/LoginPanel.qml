@@ -32,73 +32,79 @@ Item {
 			left: parent.left
 		}
 
-		PowerButton {
+		CustomButton {
 			id: powerButton
+			iconSource: "../icons/power.svg"
+			onButtonClicked: sddm.powerOff()
 			Keys.onPressed: {
 				switch (event.key)  {
 				case Qt.Key_Return:
 				case Qt.Key_Enter:
-					powerButton.powerButton.clicked()
+					powerButton.button.clicked()
 					break;
 				case Qt.Key_Right:
-					userField.focus = true
+					userField.forceActiveFocus()
 					break;
 				case Qt.Key_Left:
-					sessionPanel.sessionButton.focus = true
+					sessionPanel.sessionButton.button.forceActiveFocus()
 					break
 				case Qt.Key_Down:
-					rebootButton.rebootButton.focus = true
+					rebootButton.button.forceActiveFocus()
 					break
 				case Qt.Key_Up:
-					sleepButton.sleepButton.focus = true
+					sleepButton.button.forceActiveFocus()
 					break
 				}
 			}
 		}
 
-		RebootButton {
+		CustomButton {
 			id: rebootButton
+			iconSource: "../icons/reboot.svg"
+			onButtonClicked: sddm.reboot()
 			Keys.onPressed: {
 				switch (event.key) {
 				case Qt.Key_Return:
 				case Qt.Key_Enter:
-					rebootButton.rebootButton.clicked()
+					rebootButton.button.clicked()
 					break
 				case Qt.Key_Up:
-					powerButton.powerButton.focus = true
+					powerButton.button.forceActiveFocus()
 					break
 				case Qt.Key_Down:
-					sleepButton.sleepButton.focus = true
+					sleepButton.button.forceActiveFocus()
 					break
 				case Qt.Key_Right:
-					userField.focus = true
+					userField.forceActiveFocus()
 					break
 				case Qt.Key_Left:
-					sessionPanel.sessionButton.focus = true
+					sessionPanel.sessionButton.button.forceActiveFocus()
 					break
 				}
 			}
 		}
 
-		SleepButton {
+		CustomButton {
 			id: sleepButton
+			iconSource: "../icons/sleep.svg"
+			onButtonClicked: sddm.suspend()
 			Keys.onPressed: {
 				switch (event.key) {
 				case Qt.Key_Return:
 				case Qt.Key_Enter:
-					sleepButton.sleepButton.clicked()
+					sleepButton.button.clicked()
 					break
 				case Qt.Key_Up:
-					rebootButton.rebootButton.focus = true
+					rebootButton.button.forceActiveFocus()
 					break
 				case Qt.Key_Down:
-					powerButton.powerButton.focus = true
+					powerButton.button.forceActiveFocus()
 					break
 				case Qt.Key_Right:
-					userField.focus = true
+					userField.forceActiveFocus()
 					break
 				case Qt.Key_Left:
-					sessionPanel.sessionButton.focus = true
+					sessionPanel.sessionButton.button.forceActiveFocus()
 					break
 				}
 			}
@@ -120,13 +126,13 @@ Item {
 				switch (event.key) {
 				case Qt.Key_Return:
 				case Qt.Key_Enter:
-					sessionPanel.sessionButton.clicked()
+					sessionPanel.sessionButton.button.clicked()
 					break
 				case Qt.Key_Left:
-					userField.focus = true
+					userField.forceActiveFocus()
 					break
 				case Qt.Key_Right:
-					powerButton.powerButton.focus = true
+					powerButton.button.forceActiveFocus()
 					break
 				}
 			}
@@ -146,25 +152,39 @@ Item {
 			switch (event.key) {
 			case Qt.Key_Return:
 			case Qt.Key_Enter:
-				loginButton.clicked()
+				if (user == "") {
+					userField.forceActiveFocus()
+				} else if (password == "") {
+					passwordField.forceActiveFocus()
+				} else {
+					loginButton.button.clicked()
+				}
+				break
 			}
 		}
 
-		UserField {
+		CustomTextField {
 			id: userField
-			height: config.FontSize * 2.5
+			echoMode: TextInput.Normal
+			placeholderText: "Username"
 			width: parent.width
-			focus: userModel.lastUser == ""
+			text: userModel.lastUser
+			focus: userModel.lastUser === ""
 			Keys.onPressed: {
 				switch (event.key) {
+				case Qt.Key_Up:
 				case Qt.Key_Down:
-					passwordField.focus = true
+					passwordField.forceActiveFocus()
 					break
 				case Qt.Key_Right:
-					sessionPanel.sessionButton.focus = true
+					if (userField.cursorPosition === userField.text.length || event.modifiers & Qt.ControlModifier) {
+						sessionPanel.sessionButton.button.forceActiveFocus()
+					}
 					break
 				case Qt.Key_Left:
-					powerButton.powerButton.focus = true
+					if (userField.cursorPosition === 0 || event.modifiers & Qt.ControlModifier) {
+						powerButton.button.forceActiveFocus()
+					}
 					break
 				}
 			}
@@ -173,70 +193,51 @@ Item {
 		RowLayout {
 			id: row
 			spacing: config.FontSize
-			PasswordField {
-				id: passwordField
-				Layout.preferredWidth: (inputWidth - loginButton.width - row.spacing)
-				Layout.preferredHeight: config.FontSize * 2.5
-				focus: userModel.lastUser != ""
 
+			CustomTextField {
+				id: passwordField
+				placeholderText: "Password"
+				echoMode: TextInput.Password
+				Layout.preferredWidth: (inputWidth - loginButton.button.width - row.spacing)
+				Layout.preferredHeight: config.FontSize * 2.5
+				focus: userModel.lastUser !== ""
 
 				Keys.onPressed: {
 					switch (event.key) {
 					case Qt.Key_Up:
-						userField.focus = true
+					case Qt.Key_Down:
+						userField.forceActiveFocus()
 						break
 					case Qt.Key_Right:
-						loginButton.focus = true
+						if (passwordField.cursorPosition === passwordField.text.length || event.modifiers & Qt.ControlModifier) {
+							loginButton.button.forceActiveFocus()
+						}
 						break
 					case Qt.Key_Left:
-						powerButton.powerButton.focus = true
+						if (passwordField.cursorPosition === 0 || event.modifiers & Qt.ControlModifier) {
+							powerButton.button.forceActiveFocus()
+						}
 						break
 					}
 				}
 			}
 
-			Button {
+			CustomButton {
 				id: loginButton
-				Layout.preferredWidth: config.FontSize * 2.5
-				Layout.preferredHeight: config.FontSize * 2.5
-				hoverEnabled: true
-				onClicked: sddm.login(user, password, session)
-				MouseArea {
-					id: mouseArea
-					anchors.fill: parent
-					cursorShape: Qt.PointingHandCursor
-					onClicked: sddm.login(user, password, session)
-				}
-				icon {
-					source: Qt.resolvedUrl("../icons/login.svg")
-					color: config.fgColor
-				}
-				background: Rectangle {
-					id: loginButtonBackground
-					color: config.bgColor
-					border.color: config.fgColor
-				}
-				states: [
-					State {
-						name: "focus"
-						when: loginButton.focus || loginButton.hovered
-						PropertyChanges {
-							target: loginButtonBackground
-							border.color: config.placeholderColor
-						}
-					}
-				]
+				onButtonClicked: sddm.login(user, password, session)
+				iconSource: "../icons/login.svg"
+
 				Keys.onPressed: {
 					switch (event.key) {
 					case Qt.Key_Left:
-						passwordField.focus = true
+						passwordField.forceActiveFocus()
 						break
 					case Qt.Key_Up:
 					case Qt.Key_Down:
-						userField.focus = true
+						userField.forceActiveFocus()
 						break
 					case Qt.Key_Right:
-						sessionPanel.sessionButton.focus = true
+						sessionPanel.sessionButton.button.forceActiveFocus()
 						break
 					}
 				}
@@ -248,7 +249,7 @@ Item {
 		target: sddm
 		function onLoginFailed() {
 			passwordField.text = ""
-			passwordField.focus = true
+			passwordField.forceActiveFocus()
 		}
 	}
 }
