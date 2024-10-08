@@ -23,12 +23,20 @@
 		pathToThemeDir = "sddm/themes";
 	in {
 		services.displayManager.sddm.enable = true;
-		services.desktopManager.plasma6.enable = true;
+		services.displayManager.sddm.package = pkgs.libsForQt5.sddm;
+
+		services.displayManager.sddm.extraPackages = with pkgs.libsForQt5.qt5; [
+			qtbase
+			qtsvg
+			qtgraphicaleffects
+			qtquickcontrols2
+		];
 
 		environment.etc."${pathToThemeDir}/${config.display-server.sddm.theme}".source = sddmTheme;
 
 		services.displayManager.sddm.settings.Theme.ThemeDir = "/etc/${pathToThemeDir}";
 		services.displayManager.sddm.settings.General.InputMethod = "";
+		services.displayManager.sddm.settings.General.GreeterCommand = "${pkgs.libsForQt5.sddm}/bin/sddm-greeter";
 		services.displayManager.sddm.theme = config.display-server.sddm.theme;
 	});
 }
