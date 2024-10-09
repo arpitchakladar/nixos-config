@@ -1,5 +1,5 @@
 # Global properties
-title-font: "FiraCode Nerd Font Mono Regular 20"
+title-font: "FiraCode Nerd Font Mono Regular 40"
 title-color: "#{{base07-hex}}"
 desktop-color: "#{{base00-hex}}"
 terminal-font: "FiraCode Nerd Font Mono Regular 20"
@@ -25,13 +25,13 @@ terminal-border: "2px"
 # Countdown message
 + label {
 	left = 0
-	top = 100%-80
+	top = 100%-60
 	width = 100%
 	align = "center"
 	id = "__timeout__"
 	text = "Booting in %d seconds"
 	color = "#{{base04-hex}}"
-	font = "FiraCode Nerd Font Mono Regular 20"
+	font = "FiraCode Nerd Font Mono Regular 15"
 }
 
 # Navigation keys hint
@@ -42,5 +42,5 @@ terminal-border: "2px"
 	align = "center"
 	text = "Use ↑ and ↓ keys to change selection, Enter to confirm"
 	color = "#{{base04-hex}}"
-	font = "FiraCode Nerd Font Mono Regular 20"
+	font = "FiraCode Nerd Font Mono Regular 15"
 }
