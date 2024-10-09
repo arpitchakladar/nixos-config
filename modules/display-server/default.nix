@@ -20,11 +20,6 @@
 				name = "xinit";
 				start = "exec $HOME/.xinitrc";
 			}
-			{
-				manage = "desktop";
-				name = "xinittest";
-				start = "exec $HOME/.xinitrc";
-			}
 		];
 
 		services.xserver.displayManager.startx.enable = true;
