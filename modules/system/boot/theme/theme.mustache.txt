@@ -1,0 +1,46 @@
+# Global properties
+title-font: "FiraCode Nerd Font Mono Regular 20"
+title-color: "#{{base07-hex}}"
+desktop-color: "#{{base00-hex}}"
+terminal-font: "FiraCode Nerd Font Mono Regular 20"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "2px"
+
+# Boot menu
++ boot_menu {
+	left = 15%
+	top = 20%
+	width = 70%
+	height = 60%
+	item_font = "FiraCode Nerd Font Mono Regular 20"
+	item_color = "#{{base04-hex}}"
+	selected_item_color = "#{{base07-hex}}"
+	item_height = 40
+	item_spacing = 4
+}
+
+# Countdown message
++ label {
+	left = 0
+	top = 100%-80
+	width = 100%
+	align = "center"
+	id = "__timeout__"
+	text = "Booting in %d seconds"
+	color = "#{{base04-hex}}"
+	font = "FiraCode Nerd Font Mono Regular 20"
+}
+
+# Navigation keys hint
++ label {
+	left = 0
+	top = 100%-40
+	width = 100%
+	align = "center"
+	text = "Use ↑ and ↓ keys to change selection, Enter to confirm"
+	color = "#{{base04-hex}}"
+	font = "FiraCode Nerd Font Mono Regular 20"
+}

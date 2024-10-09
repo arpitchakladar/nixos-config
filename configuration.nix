@@ -14,14 +14,19 @@
 
 	system.boot.enable = true;
 	system.boot.efi = false;
+	system.boot.device = "/dev/sda";
+	system.boot.theme.enable = true;
+
 	system.networking.enable = true;
 	system.networking.host = "bertor";
+
 	system.virtualization.enable = true;
 	system.virtualization.program = "virtualbox";
 	system.virtualization.sharedFolder = {
 		directory = "/vmshare";
 		device = "Shared";
 	};
+
 	system.time.enable = true;
 	system.time.timeZone = "Asia/Kolkata";
 
