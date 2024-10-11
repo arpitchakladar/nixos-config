@@ -23,6 +23,7 @@
 				mv FiraCodeNerdFont.pf2 $out/FiraCodeNerdFont.pf2
 				mv FiraCodeNerdFontLarge.pf2 $out/FiraCodeNerdFontLarge.pf2
 				mv FiraCodeNerdFontSmall.pf2 $out/FiraCodeNerdFontSmall.pf2
+				cp ${../../../../assets/wandering-man.png} $out/background.png
 				cp ${themeConf} $out/theme.txt
 				sed -i -e '1ititle-text: "${config.system.networking.host}"\' $out/theme.txt
 			'');

@@ -16,6 +16,19 @@ Item {
 		z: 0
 		color: config.bgColor
 	}
+	Image {
+		id: backgroundImage
+		anchors.fill: parent
+		height: parent.height
+		width: parent.width
+		fillMode: Image.PreserveAspectCrop
+		z: 1
+		source: config.Background
+		asynchronous: false
+		cache: true
+		mipmap: true
+		clip: true
+	}
 	Item {
 		id: mainPanel
 		z: 3

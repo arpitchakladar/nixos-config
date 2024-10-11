@@ -2,6 +2,7 @@
 title-font: "FiraCode Nerd Font Mono Regular 40"
 title-color: "#{{base07-hex}}"
 desktop-color: "#{{base00-hex}}"
+desktop-image: "background.png"
 terminal-font: "FiraCode Nerd Font Mono Regular 20"
 terminal-left: "0"
 terminal-top: "0"
