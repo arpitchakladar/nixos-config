@@ -26,7 +26,7 @@
 		# Define on which hard drive you want to install Grub.
 		boot.loader.grub.device = config.system.boot.device; # or "nodev" for efi only
 		boot.plymouth.enable = false;
-		boot.loader.grub.splashImage = null;
+		boot.loader.grub.splashImage = ../../../assets/wandering-man.png;
 
 		# EFI configs
 		boot.loader.grub.efiSupport = ifEfi true;

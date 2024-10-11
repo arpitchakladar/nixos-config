@@ -17,6 +17,7 @@ pkgs.stdenv.mkDerivation {
 		mv ./icons $out/icons
 		mv Main.qml $out/Main.qml
 		mv metadata.desktop $out/metadata.desktop
+		cp ${../../../../assets/sapling.png} $out/background.png
 		cp ${themeConf} $out/theme.conf
 	'');
 }
