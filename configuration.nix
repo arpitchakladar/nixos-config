@@ -24,6 +24,10 @@
 
 	system.virtualization.enable = true;
 	system.virtualization.program = "virtualbox";
+	system.virtualization.sharedFolder = {
+		directory = "/vmshare";
+		device = "Shared";
+	};
 
 	system.time.enable = true;
 	system.time.timeZone = "Asia/Kolkata";
