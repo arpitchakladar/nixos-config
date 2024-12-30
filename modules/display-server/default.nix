@@ -15,6 +15,15 @@
 
 		services.displayManager.defaultSession = "xinit";
 
+		environment.systemPackages = with pkgs.xorg; [
+			libX11
+			libXext
+			libXrandr
+			libXrender
+			libXtst
+			libXinerama
+		];
+
 		services.xserver.displayManager.session = [
 			{
 				manage = "desktop";
