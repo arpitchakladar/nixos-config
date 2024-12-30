@@ -12,5 +12,6 @@
 	config = lib.mkIf config.system.networking.enable {
 		networking.hostName = config.system.networking.host;
 		networking.networkmanager.enable = true;
+		networking.firewall.allowedTCPPorts = lib.range 8000 8100;
 	};
 }

@@ -24,6 +24,7 @@
 	in {
 		services.displayManager.sddm.enable = true;
 		services.displayManager.sddm.package = pkgs.libsForQt5.sddm;
+		services.xserver.autorun = true;
 
 		services.displayManager.sddm.extraPackages = with pkgs.libsForQt5.qt5; [
 			qtbase
