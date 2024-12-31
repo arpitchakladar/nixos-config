@@ -116,11 +116,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1735589026,
-        "narHash": "sha256-IGotADraFKU5pn6GlekLiUTzcroLhMKnxgmnxjgH/qc=",
+        "lastModified": 1735660608,
+        "narHash": "sha256-W8TXOVSQqvaFz3nitlosrVrJdaYu1fEmTIQypXJZEX8=",
         "owner": "arpitchakladar",
         "repo": "tuilog",
-        "rev": "17d522f45eec1511b1d761738b285462fb4cb26d",
+        "rev": "2f0498be904ab6c1691302b5ca422fa5fec96ee2",
         "type": "github"
       },
       "original": {
