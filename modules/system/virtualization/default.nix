@@ -8,7 +8,7 @@
 	];
 
 	options.system.virtualization = {
-		enable = lib.mkEnableOption "Enable virtualization capabilities.";
+		enable = lib.mkEnableOption "Enable virtualization guest capabilities.";
 		program = lib.mkOption {
 			type = lib.types.enum [
 				"virtualbox"
@@ -17,16 +17,22 @@
 			description = "The program that is being used for virtualization.";
 		};
 		audio.legacyIntel = lib.mkEnableOption "Use legacy Intel autio chipset.";
-		sharedFolder = {
-			directory = lib.mkOption {
-				type = lib.types.str;
-				description = "The path to the shared folder on this machine.";
-			};
+		sharedFolders = lib.mkOption {
+			type = lib.types.listOf (lib.types.submodule {
+				options = {
+					directory = lib.mkOption {
+						type = lib.types.str;
+						description = "Path to the shared folder on this guest machine.";
+					};
 
-			device = lib.mkOption {
-				type = lib.types.str;
-				description = "The device that represents the shared folder.";
-			};
+					device = lib.mkOption {
+						type = lib.types.str;
+						description = "Device name for the shared folder.";
+					};
+				};
+			});
+			default = [];
+			description = "List of shared folders for the VM.";
 		};
 	};
 }
