@@ -31,18 +31,26 @@ EOF
 			config.system.virtualization.enable &&
 			config.system.virtualization.program
 				== "virtualbox"
+		) (lib.mkMerge [
+		{
+			virtualisation.virtualbox.guest.enable = true;
+			virtualisation.virtualbox.guest.clipboard = true;
+			virtualisation.virtualbox.guest.seamless = true;
+			fileSystems."${config.system.virtualization.sharedFolder.directory}" = {
+				fsType = "vboxsf";
+				device = config.system.virtualization.sharedFolder.device;
+				options = [ "rw" "nofail" ];
+			};
+			services.xserver.videoDrivers = lib.mkForce [ "vboxvideo" "modesetting" ];
+			environment.systemPackages = [
+				VBoxGuest
+			];
+		}
+		(lib.mkIf (
+			config.system.audio.enable &&
+			config.system.virtualization.audio.legacyIntel
 		) {
-		virtualisation.virtualbox.guest.enable = true;
-		virtualisation.virtualbox.guest.clipboard = true;
-		virtualisation.virtualbox.guest.seamless = true;
-		fileSystems."${config.system.virtualization.sharedFolder.directory}" = {
-			fsType = "vboxsf";
-			device = config.system.virtualization.sharedFolder.device;
-			options = [ "rw" "nofail" ];
-		};
-		services.xserver.videoDrivers = lib.mkForce [ "vboxvideo" "modesetting" ];
-		environment.systemPackages = [
-			VBoxGuest
-		];
-	};
+			boot.kernelModules = [ "snd_intel8x0" ];
+		})
+	]);
 }

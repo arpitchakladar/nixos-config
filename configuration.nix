@@ -14,6 +14,8 @@
 
 	baseDirectory = "/etc/nixos";
 
+	system.audio.enable = true;
+
 	system.boot.enable = true;
 	system.boot.efi = false;
 	system.boot.device = "/dev/sda";
@@ -24,6 +26,7 @@
 
 	system.virtualization.enable = true;
 	system.virtualization.program = "virtualbox";
+	system.virtualization.audio.legacyIntel = true;
 	system.virtualization.sharedFolder = {
 		directory = "/vmshare";
 		device = "Shared";
