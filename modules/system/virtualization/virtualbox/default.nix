@@ -36,11 +36,15 @@ EOF
 			virtualisation.virtualbox.guest.enable = true;
 			virtualisation.virtualbox.guest.clipboard = true;
 			virtualisation.virtualbox.guest.seamless = true;
-			fileSystems."${config.system.virtualization.sharedFolder.directory}" = {
-				fsType = "vboxsf";
-				device = config.system.virtualization.sharedFolder.device;
-				options = [ "rw" "nofail" ];
-			};
+			fileSystems = lib.mkMerge (
+				map (sharedFolder: {
+					${sharedFolder.directory} = {
+						device = sharedFolder.device;
+						fsType = "vboxsf";
+						options = [ "rw" "nofail" ];
+					};
+				}) config.system.virtualization.sharedFolders
+			);
 			services.xserver.videoDrivers = lib.mkForce [ "vboxvideo" "modesetting" ];
 			environment.systemPackages = [
 				VBoxGuest

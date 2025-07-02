@@ -23,14 +23,17 @@
 
 	system.networking.enable = true;
 	system.networking.host = "bertor";
+	system.networking.allowedTCPPorts = lib.range 8000 8100;
 
 	system.virtualization.enable = true;
 	system.virtualization.program = "virtualbox";
 	system.virtualization.audio.legacyIntel = true;
-	system.virtualization.sharedFolder = {
-		directory = "/vmshare";
-		device = "Shared";
-	};
+	system.virtualization.sharedFolders = [
+		{
+			directory = "/vmshare";
+			device = "Shared";
+		}
+	];
 
 	system.time.enable = true;
 	system.time.timeZone = "Asia/Kolkata";
@@ -42,7 +45,12 @@
 	display-server.sddm.theme = "monochrome";
 
 	user.enable = true;
-	user.username = "arpit";
+	user.users = [
+		{
+			username = "arpit";
+			wheel = true;
+		}
+	];
 
 	# This option defines the first version of NixOS you have installed on this particular machine,
 	# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
