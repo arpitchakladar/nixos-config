@@ -21,6 +21,11 @@
 						"vboxsf"
 					]
 				else [])
+				(if config.system.audio.enable then
+					[
+						"audio"
+					]
+				else [])
 			];
 			initialPassword = "nixos";
 		};

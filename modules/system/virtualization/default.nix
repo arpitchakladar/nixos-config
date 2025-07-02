@@ -16,6 +16,7 @@
 			];
 			description = "The program that is being used for virtualization.";
 		};
+		audio.legacyIntel = lib.mkEnableOption "Use legacy Intel autio chipset.";
 		sharedFolder = {
 			directory = lib.mkOption {
 				type = lib.types.str;
