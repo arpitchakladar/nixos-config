@@ -26,7 +26,7 @@
 	system.networking.allowedTCPPorts = lib.range 8000 8100;
 
 	system.virtualization.enable = true;
-	system.virtualization.program = "virtualbox";
+	system.virtualization.program = "vmware";
 	system.virtualization.audio.legacyIntel = true;
 	system.virtualization.sharedFolders = [
 		{
@@ -38,11 +38,7 @@
 	system.time.enable = true;
 	system.time.timeZone = "Asia/Kolkata";
 
-	display-server.enable = true;
-	display-server.ly.enable = false;
-	display-server.sddm.enable = false;
-	display-server.tuilog.enable = true;
-	display-server.sddm.theme = "monochrome";
+	graphical.enable = true;
 
 	user.enable = true;
 	user.users = [
@@ -69,6 +65,6 @@
 	# and migrated your data accordingly.
 	#
 	# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-	system.stateVersion = "24.11"; # Did you read the comment?
+	system.stateVersion = "25.05"; # Did you read the comment?
 }
 

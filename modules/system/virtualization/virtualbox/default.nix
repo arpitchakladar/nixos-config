@@ -41,7 +41,16 @@ EOF
 					${sharedFolder.directory} = {
 						device = sharedFolder.device;
 						fsType = "vboxsf";
-						options = [ "rw" "nofail" ];
+						options = [
+							"rw"
+							"umask=22"
+							"uid=1000"
+							"gid=1000"
+							"defaults"
+							"allow_other"
+							"auto_unmount"
+							"nofail"
+						];
 					};
 				}) config.system.virtualization.sharedFolders
 			);

@@ -2,10 +2,10 @@
 
 {
 	imports = [
-		./display-server
-		./user
+		./graphical
 		./system
 		./tools
+		./user
 	];
 
 	options = {
