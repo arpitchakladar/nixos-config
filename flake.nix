@@ -15,10 +15,6 @@
 			url = "github:tinted-theming/schemes";
 			flake = false;
 		};
-
-		tuilog = {
-			url = "github:arpitchakladar/tuilog";
-		};
 	};
 
 	outputs = { self, nixpkgs, ... }@inputs: {
@@ -32,7 +28,6 @@
 				{
 					scheme = "${inputs.tt-schemes}/base16/onedark-dark.yaml";
 				}
-				inputs.tuilog.nixosModules.tuilog
 			];
 		};
 	};
