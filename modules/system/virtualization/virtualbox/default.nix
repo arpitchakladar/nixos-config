@@ -54,7 +54,7 @@ EOF
 					};
 				}) config.system.virtualization.sharedFolders
 			);
-			services.xserver.videoDrivers = lib.mkForce [ "vboxvideo" "modesetting" ];
+			services.xserver.videoDrivers = lib.mkForce [ "vboxvideo" "modesetting" "virtualbox" ];
 			environment.systemPackages = [
 				VBoxGuest
 			];

@@ -5,6 +5,5 @@
 		neovim
 		git
 		dmenu
-		xclip
 	];
 }
