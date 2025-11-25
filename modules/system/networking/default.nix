@@ -1,6 +1,10 @@
 { lib, config, ... }:
 
 {
+	imports = [
+		./bluetooth.nix
+	];
+
 	options.system.networking = {
 		enable = lib.mkEnableOption "Enable networking configuration.";
 
@@ -11,7 +15,7 @@
 
 		allowedTCPPorts = lib.mkOption {
 			type = lib.types.listOf lib.types.int;
-			default = lib.range 8000 8100;
+			default = [];
 			description = "List of TCP ports allowed through the firewall.";
 		};
 	};

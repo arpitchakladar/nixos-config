@@ -11,13 +11,7 @@
 
 	config = lib.mkIf config.graphical.enable {
 		services.xserver.enable = true;
-		environment.systemPackages = with pkgs; [
-			xorg.xinit
-		];
-		services.xserver.displayManager.session = [{
-			manage = "window";
-			name = "xinit";
-			start = "waitPID=$!";
-		}];
+		services.xserver.windowManager.bspwm.enable = true;
+		services.xserver.libinput.enable = true;
 	};
 }

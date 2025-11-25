@@ -4,11 +4,6 @@
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		base16.url = "github:SenchoPens/base16.nix";
 
 		tt-schemes = {
@@ -23,7 +18,6 @@
 			modules = [
 				./modules
 				./configuration.nix
-				inputs.home-manager.nixosModules.default
 				inputs.base16.homeManagerModule
 				{
 					scheme = "${inputs.tt-schemes}/base16/onedark-dark.yaml";
