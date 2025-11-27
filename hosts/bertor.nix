@@ -19,7 +19,6 @@
 
 	drivers.nvidia.enable = true;
 
-	user.enable = true;
 	user.users = [
 		{
 			username = "arpit";
