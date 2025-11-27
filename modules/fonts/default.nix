@@ -1,7 +1,9 @@
-{ lib, config, ... }:
+{ pkgs, ... }:
 
 {
-	imports = [
-		./nerdfont
-	];
+	config = {
+		environment.systemPackages = with pkgs; [
+			nerd-fonts.fira-code
+		];
+	};
 }

@@ -2,6 +2,6 @@
 
 {
 	imports = [
-		./fira-code
+		./nvidia.nix
 	];
 }
