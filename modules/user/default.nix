@@ -35,8 +35,7 @@
 					(lib.mkIf user.wheel
 						(lib.mkMerge [
 							[ "wheel" "input" ]
-							(if config.system.virtualization.program == "virtualbox" then [ "vboxsf" ] else [])
-							(if config.system.audio.enable then [ "audio" ] else [])
+							(if config.audio.enable then [ "audio" ] else [])
 							(if config.hardware.graphics.enable then [ "video" ] else [])
 						])
 					)

@@ -1,3 +1,4 @@
+
 { lib, config, ... }:
 
 {
@@ -5,7 +6,7 @@
 		./bluetooth.nix
 	];
 
-	options.system.networking = {
+	options.networking = {
 		enable = lib.mkEnableOption "Enable networking configuration.";
 
 		host = lib.mkOption {
@@ -20,10 +21,10 @@
 		};
 	};
 
-	config = lib.mkIf config.system.networking.enable {
-		networking.hostName = config.system.networking.host;
+	config = lib.mkIf config.networking.enable {
+		networking.hostName = config.networking.host;
 		networking.networkmanager.enable = true;
 		networking.firewall.enable = true;
-		networking.firewall.allowedTCPPorts = config.system.networking.allowedTCPPorts;
+		networking.firewall.allowedTCPPorts = config.networking.allowedTCPPorts;
 	};
 }

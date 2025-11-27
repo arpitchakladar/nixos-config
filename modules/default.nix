@@ -2,8 +2,12 @@
 
 {
 	imports = [
-		./graphical
-		./system
+		./audio
+		./boot
+		./desktop
+		./drivers
+		./fonts
+		./networking
 		./tools
 		./user
 	];

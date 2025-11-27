@@ -1,11 +1,11 @@
 { config, lib, ... }:
 
 {
-	options.system.audio = {
+	options.audio = {
 		enable = lib.mkEnableOption "Enable audio configuration.";
 	};
 
-	config = lib.mkIf config.system.audio.enable {
+	config = lib.mkIf config.audio.enable {
 		services.pipewire = {
 			enable = true;
 			audio.enable = true;
