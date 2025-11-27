@@ -2,8 +2,6 @@
 
 {
 	options.user = {
-		enable = lib.mkEnableOption "Enables user configuration.";
-
 		users = lib.mkOption {
 			type = lib.types.listOf (lib.types.submodule {
 				options = {
@@ -25,7 +23,7 @@
 		};
 	};
 
-	config = lib.mkIf config.user.enable {
+	config = {
 		users.users = lib.listToAttrs (map (user: {
 			name = user.username;
 			value = {
