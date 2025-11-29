@@ -2,7 +2,7 @@
 
 {
 	imports = [
-		./greetd.nix
+		./ly.nix
 		./xdg.nix
 	];
 
