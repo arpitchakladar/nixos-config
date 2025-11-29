@@ -2,7 +2,7 @@
 	description = "Nixos config flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 		base16.url = "github:SenchoPens/base16.nix";
 		tt-schemes = {
 			url = "github:tinted-theming/schemes";
