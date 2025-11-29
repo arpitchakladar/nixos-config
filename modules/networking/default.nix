@@ -4,6 +4,7 @@
 {
 	imports = [
 		./bluetooth.nix
+		./wifi.nix
 	];
 
 	options.networking = {
@@ -13,18 +14,13 @@
 			type = lib.types.str;
 			description = "Set the hostname for the machine.";
 		};
-
-		allowedTCPPorts = lib.mkOption {
-			type = lib.types.listOf lib.types.int;
-			default = [];
-			description = "List of TCP ports allowed through the firewall.";
-		};
 	};
 
 	config = lib.mkIf config.networking.enable {
 		networking.hostName = config.networking.host;
-		networking.networkmanager.enable = true;
+		networking.useDHCP = true;
+		networking.useNetworkd = true;
+		systemd.network.enable = true;
 		networking.firewall.enable = true;
-		networking.firewall.allowedTCPPorts = config.networking.allowedTCPPorts;
 	};
 }

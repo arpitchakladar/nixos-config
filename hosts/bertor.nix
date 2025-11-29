@@ -10,6 +10,7 @@
 	networking.enable = true;
 	networking.host = "bertor";
 	networking.bluetooth.enable = true;
+	networking.wifi.enable = true;
 
 	time.timeZone = "Asia/Kolkata";
 
