@@ -19,6 +19,8 @@
 	desktop.enable = true;
 
 	drivers.nvidia.enable = true;
+	drivers.nvidia.amdgpuBusId = "PCI:5:0:0";
+	drivers.nvidia.nvidiaBusId = "PCI:1:0:0";
 
 	user.users = [
 		{

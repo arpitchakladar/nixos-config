@@ -8,6 +8,8 @@
 			settings = {
 				animation = "gameoflife";
 				battery_id = "BAT1";
+				bigclock_12hr = true;
+				gameoflife_initial_density = 0.1;
 			};
 		};
 	};
