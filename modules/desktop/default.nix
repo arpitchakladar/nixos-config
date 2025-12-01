@@ -3,7 +3,7 @@
 {
 	imports = [
 		./ly.nix
-		./xdg.nix
+		./xdg-portal.nix
 	];
 
 	options.desktop = {

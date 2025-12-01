@@ -1,12 +1,35 @@
 { config, pkgs, lib, ... }:
 
+# Nvidia gpu graphics with PRIME Offloading
 {
 	options.drivers.nvidia = {
 		enable = lib.mkEnableOption "Enable nvidia drivers.";
+
+		amdgpuBusId = lib.mkOption {
+			type = lib.types.str;
+			default = "";
+			description = "PCI Bus ID for AMD GPU.";
+		};
+
+		intelBusId = lib.mkOption {
+			type = lib.types.str;
+			default = "";
+			description = "PCI Bus ID for Intel GPU.";
+		};
+
+		nvidiaBusId = lib.mkOption {
+			type = lib.types.str;
+			description = "PCI Bus ID for NVIDIA GPU.";
+		};
 	};
 
 	config = lib.mkIf config.drivers.nvidia.enable {
-		services.xserver.videoDrivers = [ "amdgpu" "nvidia" ];
+		services.xserver.videoDrivers = [
+			(if config.drivers.nvidia.intelBusId != "" then "modesetting"
+				else if config.drivers.nvidia.amdgpuBusId != "" then "amdgpu"
+				else null)
+			"nvidia"
+		];
 
 		hardware.nvidia = {
 			open = true;
@@ -22,8 +45,11 @@
 					enable = true;
 					enableOffloadCmd = true;
 				};
-				amdgpuBusId = "PCI:5:0:0";
-				nvidiaBusId = "PCI:1:0:0";
+				amdgpuBusId = lib.mkIf (config.drivers.nvidia.amdgpuBusId != "")
+					config.drivers.nvidia.amdgpuBusId;
+				intelBusId = lib.mkIf (config.drivers.nvidia.intelBusId != "")
+					config.drivers.nvidia.intelBusId;
+				nvidiaBusId = config.drivers.nvidia.nvidiaBusId;
 			};
 		};
 
