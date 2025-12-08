@@ -35,6 +35,7 @@
 							[ "wheel" "input" ]
 							(if config.audio.enable then [ "audio" ] else [])
 							(if config.hardware.graphics.enable then [ "video" ] else [])
+							(if config.virtualization.enable then [ "libvirtd" ] else [])
 						])
 					)
 					user.extraGroups
