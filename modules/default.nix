@@ -10,6 +10,7 @@
 		./networking
 		./tools
 		./user
+		./virtualization
 	];
 
 	options = {
