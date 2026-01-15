@@ -42,6 +42,14 @@
 				];
 			};
 		}) config.user.users);
+
+		nix.settings.trusted-users = (lib.mkMerge [
+			["root"]
+			(map
+				(user: lib.mkIf user.wheel user.username)
+				config.user.users
+			)
+		]);
 	};
 }
 
