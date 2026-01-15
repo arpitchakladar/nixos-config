@@ -7,7 +7,7 @@
 				options = {
 					username = lib.mkOption {
 						type = lib.types.str;
-						description = "Username for the user.";
+						description = "Username of the user.";
 					};
 
 					wheel = lib.mkEnableOption "Set whether the user has sudo priviledges.";
