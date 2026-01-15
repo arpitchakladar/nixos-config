@@ -4,10 +4,6 @@
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 		base16.url = "github:SenchoPens/base16.nix";
-		tt-schemes = {
-			url = "github:tinted-theming/schemes";
-			flake = false;
-		};
 	};
 
 	outputs = { self, nixpkgs, ... }@inputs: {
@@ -20,7 +16,7 @@
 					./hosts/bertor.nix
 					inputs.base16.homeManagerModule
 					{
-						scheme = "${inputs.tt-schemes}/base16/onedark-dark.yaml";
+						scheme = ./assets/onedark-dark.yaml;
 					}
 				];
 			};

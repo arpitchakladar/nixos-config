@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 
 {
 	options.networking.wifi = {
@@ -6,6 +6,13 @@
 	};
 
 	config = lib.mkIf config.networking.wifi.enable {
-		networking.wireless.iwd.enable = true;
+		networking.wireless.iwd = {
+			enable = true;
+			settings = {
+				General = {
+					EnableNetworkConfiguration = true;
+				};
+			};
+		};
 	};
 }
