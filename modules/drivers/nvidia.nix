@@ -56,7 +56,10 @@
 		hardware.graphics = {
 			enable = true;
 			enable32Bit = true;
-			extraPackages = with pkgs; [ vulkan-loader ];
+			extraPackages = with pkgs; [
+				vulkan-loader
+				vulkan-tools
+			];
 			extraPackages32 = with pkgs.pkgsi686Linux; [
 				vulkan-loader
 				vulkan-tools
