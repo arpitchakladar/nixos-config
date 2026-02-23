@@ -1,8 +1,16 @@
-{ config, lib, ... }:
+{ ... }:
 
 {
 	config = {
-		boot.loader.systemd-boot.enable = true;
-		boot.loader.efi.canTouchEfiVariables = true;
+		boot.loader = {
+			efi = {
+				canTouchEfiVariables = true;
+				efiSysMountPoint = "/boot";
+			};
+			systemd-boot = {
+				enable = true;
+				configurationLimit = 5;
+			};
+		};
 	};
 }
