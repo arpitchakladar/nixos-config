@@ -1,8 +1,8 @@
 { ... }:
 
 {
-	imports = [
-		./nvidia.nix
-		./upower.nix
-	];
+  imports = [
+    ./nvidia.nix
+    ./upower.nix
+  ];
 }

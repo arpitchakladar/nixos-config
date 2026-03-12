@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-	config = {
-		services.upower.enable = true;
-	};
+  config = {
+    services.upower.enable = true;
+  };
 }

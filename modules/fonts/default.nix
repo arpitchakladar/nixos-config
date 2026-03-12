@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-	config = {
-		environment.systemPackages = with pkgs; [
-			nerd-fonts.fira-code
-		];
-	};
+  config = {
+    environment.systemPackages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
+  };
 }

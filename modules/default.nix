@@ -1,23 +1,23 @@
 { lib, ... }:
 
 {
-	imports = [
-		./audio
-		./boot
-		./desktop
-		./drivers
-		./fonts
-		./networking
-		./tools
-		./user
-		./virtualization
-	];
+  imports = [
+    ./audio
+    ./boot
+    ./desktop
+    ./drivers
+    ./fonts
+    ./networking
+    ./tools
+    ./user
+    ./virtualization
+  ];
 
-	options = {
-		baseDirectory = lib.mkOption {
-			type = lib.types.str;
-			description = "Path to the base of the nixos configuration.";
-			default = "/etc/nixos";
-		};
-	};
+  options = {
+    baseDirectory = lib.mkOption {
+      type = lib.types.str;
+      description = "Path to the base of the nixos configuration.";
+      default = "/etc/nixos";
+    };
+  };
 }

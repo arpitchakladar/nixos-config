@@ -1,11 +1,11 @@
 { lib, config, ... }:
 
 {
-	options.networking.bluetooth = {
-		enable = lib.mkEnableOption "Enable bluetooth.";
-	};
+  options.networking.bluetooth = {
+    enable = lib.mkEnableOption "Enable bluetooth.";
+  };
 
-	config = lib.mkIf config.networking.bluetooth.enable {
-		hardware.bluetooth.enable = true;
-	};
+  config = lib.mkIf config.networking.bluetooth.enable {
+    hardware.bluetooth.enable = true;
+  };
 }
