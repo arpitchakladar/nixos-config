@@ -8,7 +8,12 @@
   };
 
   outputs =
-    { self, nixpkgs, pre-commit-hooks, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      pre-commit-hooks,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
