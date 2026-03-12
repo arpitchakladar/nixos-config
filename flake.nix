@@ -6,9 +6,16 @@
     base16.url = "github:SenchoPens/base16.nix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, ... }@inputs:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    formatter.${system} = pkgs.nixfmt;
+
     nixosConfigurations = {
       bertor = nixpkgs.lib.nixosSystem {
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = [
           ./modules

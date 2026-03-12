@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    neovim
+    neovim-unwrapped
     git
     xclip
   ];
