@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 # Nvidia gpu graphics with PRIME Offloading
 {
@@ -25,9 +30,14 @@
 
   config = lib.mkIf config.drivers.nvidia.enable {
     services.xserver.videoDrivers = [
-      (if config.drivers.nvidia.intelBusId != "" then "modesetting"
-        else if config.drivers.nvidia.amdgpuBusId != "" then "amdgpu"
-        else null)
+      (
+        if config.drivers.nvidia.intelBusId != "" then
+          "modesetting"
+        else if config.drivers.nvidia.amdgpuBusId != "" then
+          "amdgpu"
+        else
+          null
+      )
       "nvidia"
     ];
 
@@ -45,10 +55,8 @@
           enable = true;
           enableOffloadCmd = true;
         };
-        amdgpuBusId = lib.mkIf (config.drivers.nvidia.amdgpuBusId != "")
-          config.drivers.nvidia.amdgpuBusId;
-        intelBusId = lib.mkIf (config.drivers.nvidia.intelBusId != "")
-          config.drivers.nvidia.intelBusId;
+        amdgpuBusId = lib.mkIf (config.drivers.nvidia.amdgpuBusId != "") config.drivers.nvidia.amdgpuBusId;
+        intelBusId = lib.mkIf (config.drivers.nvidia.intelBusId != "") config.drivers.nvidia.intelBusId;
         nvidiaBusId = config.drivers.nvidia.nvidiaBusId;
       };
     };
