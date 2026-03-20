@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 
@@ -37,13 +36,13 @@
         value = {
           isNormalUser = true;
           initialPassword = "nixos";
-          shell = pkgs.zsh;
           extraGroups = lib.mkMerge [
             (lib.mkIf user.wheel (
               lib.mkMerge [
                 [
                   "wheel"
                   "input"
+                  "uinput"
                 ]
                 (if config.audio.enable then [ "audio" ] else [ ])
                 (if config.hardware.graphics.enable then [ "video" ] else [ ])

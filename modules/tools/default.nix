@@ -6,6 +6,4 @@
     git
     xclip
   ];
-
-  programs.zsh.enable = true;
 }
