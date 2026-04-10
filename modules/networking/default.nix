@@ -17,9 +17,12 @@
 
   config = lib.mkIf config.networking.enable {
     networking.hostName = config.networking.host;
-    networking.useDHCP = true;
     networking.useNetworkd = true;
     systemd.network.enable = true;
     networking.firewall.enable = true;
+
+    # critical — lets networkd manage DNS
+    services.resolved.enable = true;
+    networking.nameservers = [ ];
   };
 }
