@@ -23,6 +23,15 @@
         src = ./.;
         hooks = {
           nixfmt.enable = true;
+
+          # Custom hook to prevent committing hardware-configuration.nix
+          forbid-hardware-config = {
+            enable = true;
+            name = "Forbid hardware-configuration.nix";
+            entry = "found hardware-configuration.nix in staging! Do not commit this file.";
+            language = "fail";
+            files = "hardware-configuration\\.nix$";
+          };
         };
       };
       formatter.${system} = pkgs.nixfmt-tree;
