@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   options.virtualization = {
@@ -9,10 +14,13 @@
     virtualisation.libvirtd = {
       enable = true;
       qemu = {
+        package = pkgs.qemu_kvm;
         swtpm.enable = true;
-        runAsRoot = true;
+        runAsRoot = false;
       };
     };
-    programs.virt-manager.enable = true;
+
+    # NOTE: Change this depending on your cpu architecture
+    boot.kernelModules = [ "kvm-amd" ];
   };
 }
