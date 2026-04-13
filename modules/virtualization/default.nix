@@ -20,6 +20,8 @@
       };
     };
 
+    virtualisation.spiceUSBRedirection.enable = true;
+
     # NOTE: Change this depending on your cpu architecture
     boot.kernelModules = [ "kvm-amd" ];
   };
