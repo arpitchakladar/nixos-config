@@ -14,5 +14,7 @@
     services.xserver.enable = true;
     services.xserver.windowManager.bspwm.enable = true;
     services.libinput.enable = true;
+
+    programs.dconf.enable = true;
   };
 }
