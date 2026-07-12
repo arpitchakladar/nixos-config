@@ -67,11 +67,30 @@
       extraPackages = with pkgs; [
         vulkan-loader
         vulkan-tools
+        freetype
+        libXfont2
+        libXrandr
+        gamemode.lib
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [
         vulkan-loader
         vulkan-tools
+        freetype
+        libXfont2
+        libXrandr
+        gamemode.lib
       ];
+    };
+
+    programs.gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 10;
+        };
+      };
     };
   };
 }

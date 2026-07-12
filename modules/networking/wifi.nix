@@ -15,7 +15,7 @@
       settings = {
         General = {
           EnableNetworkConfiguration = false;
-          RoamThreshold = -80;
+          RoamThreshold = -90;
         };
         Network = {
           EnableIPv6 = true;

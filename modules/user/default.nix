@@ -43,6 +43,7 @@
                   "wheel"
                   "input"
                   "uinput"
+                  "gamemode"
                 ]
                 (if config.audio.enable then [ "audio" ] else [ ])
                 (if config.hardware.graphics.enable then [ "video" ] else [ ])
