@@ -1,9 +1,9 @@
+# WiFi - Wireless networking via systemd-networkd and iwd
 {
   lib,
   config,
   ...
 }:
-
 {
   options.networking.wifi = {
     enable = lib.mkEnableOption "Enable wifi via systemd-networkd + iwd";

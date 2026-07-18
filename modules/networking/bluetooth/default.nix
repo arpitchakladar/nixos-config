@@ -1,5 +1,5 @@
+# Bluetooth - Bluetooth hardware support
 { lib, config, ... }:
-
 {
   options.networking.bluetooth = {
     enable = lib.mkEnableOption "Enable bluetooth.";

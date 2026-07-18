@@ -1,5 +1,5 @@
+# Neovim - Modern Vim-based text editor
 { config, lib, ... }:
-
 {
   options.tools.neovim = {
     enable = lib.mkEnableOption "neovim";

@@ -1,5 +1,5 @@
+# Modules - Top-level module aggregator
 { lib, ... }:
-
 {
   imports = [
     ./audio

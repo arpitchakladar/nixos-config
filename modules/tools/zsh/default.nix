@@ -1,5 +1,5 @@
+# Zsh - Z shell
 { config, lib, ... }:
-
 {
   options.tools.zsh = {
     enable = lib.mkEnableOption "zsh";

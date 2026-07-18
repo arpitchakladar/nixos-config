@@ -1,5 +1,5 @@
+# Desktop - Desktop environment configuration (display manager, X server, portal)
 { config, lib, ... }:
-
 {
   imports = [
     ./ly

@@ -1,5 +1,5 @@
+# Networking - Network configuration (hostname, firewall, DNS)
 { lib, config, ... }:
-
 {
   imports = [
     ./bluetooth

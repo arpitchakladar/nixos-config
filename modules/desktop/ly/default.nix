@@ -1,5 +1,5 @@
+# Ly - TUI display manager
 { config, lib, ... }:
-
 {
   config = lib.mkIf config.desktop.enable {
     services.xserver.displayManager.startx.enable = true;

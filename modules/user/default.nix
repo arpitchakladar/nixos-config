@@ -1,9 +1,9 @@
+# User - User account configuration
 {
   lib,
   config,
   ...
 }:
-
 {
   options.user = {
     users = lib.mkOption {

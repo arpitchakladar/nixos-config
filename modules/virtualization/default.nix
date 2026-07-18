@@ -1,10 +1,10 @@
+# Virtualization - VM and container support (libvirtd)
 {
   lib,
   config,
   pkgs,
   ...
 }:
-
 {
   options.virtualization = {
     enable = lib.mkEnableOption "Enable virtualization.";

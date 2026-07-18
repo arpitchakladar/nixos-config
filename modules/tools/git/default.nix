@@ -1,10 +1,10 @@
+# Git - Distributed version control system
 {
   config,
   lib,
   pkgs,
   ...
 }:
-
 {
   options.tools.git = {
     enable = lib.mkEnableOption "git";

@@ -1,3 +1,4 @@
+# Flake - NixOS system configuration for bertor
 {
   description = "Nixos config flake";
 

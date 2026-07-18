@@ -1,5 +1,5 @@
+# Boot - Bootloader configuration (systemd-boot)
 { ... }:
-
 {
   config = {
     boot.loader = {

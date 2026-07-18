@@ -1,5 +1,5 @@
+# Audio - Sound server configuration (PipeWire)
 { config, lib, ... }:
-
 {
   options.audio = {
     enable = lib.mkEnableOption "Enable audio configuration.";

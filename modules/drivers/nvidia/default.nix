@@ -1,10 +1,10 @@
+# NVIDIA - NVIDIA GPU drivers with PRIME Offloading
 {
   config,
   pkgs,
   lib,
   ...
 }:
-
 # Nvidia gpu graphics with PRIME Offloading
 {
   options.drivers.nvidia = {

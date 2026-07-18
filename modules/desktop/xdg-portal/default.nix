@@ -1,10 +1,10 @@
+# XDG Desktop Portal - Desktop integration portal (file picker, screen capture)
 {
   config,
   pkgs,
   lib,
   ...
 }:
-
 {
   config = lib.mkIf config.desktop.enable {
     xdg.portal = {

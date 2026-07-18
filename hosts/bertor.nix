@@ -1,5 +1,5 @@
+# Bertor - Host-specific system configuration
 { ... }:
-
 {
   nix.settings.experimental-features = [
     "nix-command"

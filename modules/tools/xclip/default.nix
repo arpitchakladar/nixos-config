@@ -1,10 +1,10 @@
+# Xclip - X11 clipboard tool
 {
   config,
   lib,
   pkgs,
   ...
 }:
-
 {
   options.tools.xclip = {
     enable = lib.mkEnableOption "xclip";
