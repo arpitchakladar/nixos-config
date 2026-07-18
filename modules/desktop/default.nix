@@ -13,7 +13,6 @@
 
   config = lib.mkIf config.desktop.enable {
     services.libinput.enable = true;
-
     programs.dconf.enable = true;
   };
 }

@@ -19,6 +19,8 @@
 
   powerManagement.enable = true;
 
+  tools.zsh.enable = true;
+  tools.neovim.enable = true;
   tools.git.enable = true;
   tools.xclip.enable = true;
 
