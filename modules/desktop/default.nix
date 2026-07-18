@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./ly.nix
-    ./xdg-portal.nix
+    ./ly
+    ./xdg-portal
+    ./xserver
   ];
 
   options.desktop = {
@@ -11,8 +12,6 @@
   };
 
   config = lib.mkIf config.desktop.enable {
-    services.xserver.enable = true;
-    services.xserver.windowManager.bspwm.enable = true;
     services.libinput.enable = true;
 
     programs.dconf.enable = true;

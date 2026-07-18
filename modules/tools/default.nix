@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    bash
-    neovim
-    git
-    xclip
+  imports = [
+    ./zsh
+    ./neovim
+    ./git
+    ./xclip
   ];
 }

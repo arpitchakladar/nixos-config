@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./bluetooth.nix
-    ./wifi.nix
+    ./bluetooth
+    ./wifi
   ];
 
   options.networking = {

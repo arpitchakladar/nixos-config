@@ -19,6 +19,11 @@
 
   powerManagement.enable = true;
 
+  tools.git.enable = true;
+  tools.xclip.enable = true;
+
+  drivers.upower.enable = true;
+
   desktop.enable = true;
 
   drivers.nvidia.enable = true;

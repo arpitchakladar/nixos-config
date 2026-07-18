@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./nvidia.nix
-    ./upower.nix
+    ./nvidia
+    ./upower
   ];
 }
