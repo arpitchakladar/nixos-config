@@ -4,7 +4,7 @@
   imports = [
     ./ly
     ./xdg-portal
-    ./xserver
+    ./hyprland
   ];
 
   options.desktop = {

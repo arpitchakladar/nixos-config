@@ -2,7 +2,6 @@
 { config, lib, ... }:
 {
   config = lib.mkIf config.desktop.enable {
-    services.xserver.displayManager.startx.enable = true;
     services.displayManager.ly = {
       enable = true;
       settings = {

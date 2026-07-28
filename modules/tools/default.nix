@@ -5,6 +5,5 @@
     ./zsh
     ./neovim
     ./git
-    ./xclip
   ];
 }

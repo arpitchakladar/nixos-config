@@ -1,14 +1,14 @@
-# XDG Desktop Portal - Desktop integration portal (file picker, screen capture)
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 {
   config = lib.mkIf config.desktop.enable {
-    xdg.portal = {
+    programs.hyprland = {
       enable = true;
+      xwayland.enable = true;
     };
   };
 }
