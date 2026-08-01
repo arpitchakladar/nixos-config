@@ -1,10 +1,11 @@
 # Bertor - Host-specific system configuration
-{ ... }:
+{ inputs, ... }:
 {
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
   baseDirectory = "/etc/nixos";
 
