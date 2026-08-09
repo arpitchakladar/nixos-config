@@ -15,10 +15,14 @@
       settings = {
         General = {
           EnableNetworkConfiguration = false;
-          RoamThreshold = -90;
+          RoamThreshold = -120;
         };
         Network = {
           EnableIPv6 = true;
+        };
+        Scan = {
+          DisableRoamingScan = true;
+          DisablePeriodicScan = true;
         };
         DriverQuirks = {
           PowerSaveDisable = "*";

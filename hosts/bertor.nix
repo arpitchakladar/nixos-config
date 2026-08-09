@@ -16,6 +16,9 @@
   networking.bluetooth.enable = true;
   networking.wifi.enable = true;
 
+  fileSystem.enable = true;
+  fileSystem.usb.enable = true;
+
   time.timeZone = "Asia/Kolkata";
 
   powerManagement.enable = true;

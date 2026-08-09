@@ -6,6 +6,7 @@
     ./boot
     ./desktop
     ./drivers
+    ./file-system
     ./fonts
     ./networking
     ./tools
