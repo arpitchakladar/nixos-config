@@ -5,5 +5,6 @@
     ./zsh
     ./neovim
     ./git
+    ./home-manager
   ];
 }

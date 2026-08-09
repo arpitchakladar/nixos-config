@@ -9,15 +9,18 @@
 
   baseDirectory = "/etc/nixos";
 
-  audio.enable = true;
+  audio.pipewire.enable = true;
 
-  networking.enable = true;
-  networking.host = "bertor";
+  networking.systemd = {
+    enable = true;
+    hostName = "bertor";
+  };
   networking.bluetooth.enable = true;
   networking.wifi.enable = true;
 
-  fileSystem.enable = true;
+  fileSystem.support.enable = true;
   fileSystem.usb.enable = true;
+  fileSystem.gvfs.enable = true;
 
   time.timeZone = "Asia/Kolkata";
 
@@ -26,23 +29,40 @@
   tools.zsh.enable = true;
   tools.neovim.enable = true;
   tools.git.enable = true;
+  tools.homeManager.enable = true;
 
   drivers.upower.enable = true;
 
-  desktop.enable = true;
+  desktop.libinput.enable = true;
+  desktop.dconf.enable = true;
+  desktop.hyprland.enable = true;
+  desktop.ly.enable = true;
+  desktop.xdgPortal.enable = true;
 
-  drivers.nvidia.enable = true;
-  drivers.nvidia.amdgpuBusId = "PCI:5:0:0";
-  drivers.nvidia.nvidiaBusId = "PCI:1:0:0";
+  drivers.nvidia = {
+    enable = true;
+    mode = "offload";
+    integratedGpu = "amd";
+    integratedGpuBusId = "PCI:5:0:0";
+    nvidiaBusId = "PCI:1:0:0";
+    gaming.enable = true;
+  };
 
   user.users = [
     {
       username = "arpit";
       wheel = true;
+      isTrustedUser = true;
+      groups = {
+        libvirt.enable = true;
+      };
     }
   ];
 
-  virtualization.enable = true;
+  virtualization.libvirt = {
+    enable = true;
+    kvmModule = "kvm-amd";
+  };
 
   nixpkgs.config.allowUnfree = true;
 

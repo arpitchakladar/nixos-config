@@ -1,18 +1,11 @@
-# Desktop - Desktop environment configuration (display manager, X server, portal)
-{ config, lib, ... }:
+# Desktop - Desktop feature modules
+{ ... }:
 {
   imports = [
+    ./libinput
+    ./dconf
     ./ly
     ./xdg-portal
     ./hyprland
   ];
-
-  options.desktop = {
-    enable = lib.mkEnableOption "Enable desktop environment.";
-  };
-
-  config = lib.mkIf config.desktop.enable {
-    services.libinput.enable = true;
-    programs.dconf.enable = true;
-  };
 }

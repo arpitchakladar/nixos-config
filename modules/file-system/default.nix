@@ -1,22 +1,9 @@
-# File system - Filesystem configuration (NTFS, exFAT, USB)
-{
-  lib,
-  config,
-  ...
-}:
+# File system - Filesystem feature modules
+{ ... }:
 {
   imports = [
+    ./support
     ./usb
+    ./gvfs
   ];
-
-  options.fileSystem = {
-    enable = lib.mkEnableOption "Enable file system configuration.";
-  };
-
-  config = lib.mkIf config.fileSystem.enable {
-    boot.supportedFilesystems = [
-      "ntfs"
-      "exfat"
-    ];
-  };
 }

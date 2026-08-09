@@ -5,6 +5,8 @@
   ...
 }:
 {
+  imports = [ ./assertions.nix ];
+
   options.networking.wifi = {
     enable = lib.mkEnableOption "Enable wifi via systemd-networkd + iwd";
   };
