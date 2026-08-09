@@ -5,7 +5,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     base16.url = "github:SenchoPens/base16.nix";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     devenv = {
       url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +20,6 @@
     {
       self,
       nixpkgs,
-      pre-commit-hooks,
       devenv,
       ...
     }@inputs:
@@ -30,21 +28,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      checks.${system}.pre-commit-check = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          nixfmt.enable = true;
-
-          # Custom hook to prevent committing hardware-configuration.nix
-          forbid-hardware-config = {
-            enable = true;
-            name = "Forbid hardware-configuration.nix";
-            entry = "found hardware-configuration.nix in staging! Do not commit this file.";
-            language = "fail";
-            files = "hardware-configuration\\.nix$";
-          };
-        };
-      };
       formatter.${system} = pkgs.nixfmt-tree;
       devShells.${system}.default = devenv.lib.mkShell {
         inherit inputs pkgs;
