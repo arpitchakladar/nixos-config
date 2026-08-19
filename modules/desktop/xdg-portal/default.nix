@@ -1,20 +1,21 @@
 # XDG Desktop Portal - Desktop integration portal (file picker, screen capture)
 {
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 {
-  imports = [ ./assertions.nix ];
-
-  options.desktop.xdgPortal = {
-    enable = lib.mkEnableOption "XDG desktop portals";
-  };
-
-  config = lib.mkIf config.desktop.xdgPortal.enable {
+  config = lib.mkIf config.desktop.enable {
     xdg.portal = {
       enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+      ];
+      config.common = {
+        default = [ "hyprland" ];
+      };
+      xdgOpenUsePortal = true;
     };
   };
 }

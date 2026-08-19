@@ -1,11 +1,13 @@
 # Desktop - Desktop feature modules
-{ ... }:
+{ lib, ... }:
 {
   imports = [
-    ./libinput
-    ./dconf
     ./ly
     ./xdg-portal
     ./hyprland
   ];
+
+  options.desktop = {
+    enable = lib.mkEnableOption "Enables the desktop features";
+  };
 }

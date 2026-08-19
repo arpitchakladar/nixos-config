@@ -1,13 +1,7 @@
-# Ly - TUI display manager
+# Ly - TUI login manager
 { config, lib, ... }:
 {
-  imports = [ ./assertions.nix ];
-
-  options.desktop.ly = {
-    enable = lib.mkEnableOption "the Ly terminal display manager";
-  };
-
-  config = lib.mkIf config.desktop.ly.enable {
+  config = lib.mkIf config.desktop.enable {
     services.displayManager.ly = {
       enable = true;
       settings = {

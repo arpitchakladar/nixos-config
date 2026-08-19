@@ -31,14 +31,9 @@
   tools.git.enable = true;
   tools.homeManager.enable = true;
 
+  desktop.enable = true;
+
   drivers.upower.enable = true;
-
-  desktop.libinput.enable = true;
-  desktop.dconf.enable = true;
-  desktop.hyprland.enable = true;
-  desktop.ly.enable = true;
-  desktop.xdgPortal.enable = true;
-
   drivers.nvidia = {
     enable = true;
     mode = "offload";
